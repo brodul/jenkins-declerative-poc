@@ -1,6 +1,4 @@
-pipeline {
-    agent any
-
+options([
     parameters([
         [$class: 'ChoiceParameter', 
             choiceType: 'PT_SINGLE_SELECT', 
@@ -26,7 +24,11 @@ pipeline {
             ]
         ]
     ])
+])
 
+
+pipeline {
+    agent any
 
     stages {
         stage('Build') {
