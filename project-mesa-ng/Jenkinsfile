@@ -25,10 +25,12 @@ parameters {
 
     stages {
         stage('Build') {
-            // Dont trigger the rest of the script if pulled from Github
-            if (!currentBuild.getBuildCauses('jenkins.branch.BranchEventCause').isEmpty()) {
-                currentBuild.result = 'ABORTED';
-                return;
+            script {
+                // Dont trigger the rest of the script if pulled from Github
+                if (!currentBuild.getBuildCauses('jenkins.branch.BranchEventCause').isEmpty()) {
+                    currentBuild.result = 'ABORTED';
+                    return;
+                }
             }
             steps {
                 echo 'Building..'
