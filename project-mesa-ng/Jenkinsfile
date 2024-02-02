@@ -25,7 +25,7 @@ parameters {
 
     stages {
         stage('Check') {
-            when { not { triggeredBy 'SCMTrigger' } }
+            when {  triggeredBy 'SCMTrigger' }
             steps {
                 script {
                     // Dont trigger the rest of the script if pulled from Github
