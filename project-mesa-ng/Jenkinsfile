@@ -29,8 +29,8 @@ parameters {
             steps {
                 script {
                     // Dont trigger the rest of the script if pulled from Github
-                        currentBuild.result = 'ABORTED';
-                        return;
+                    currentBuild.result = 'ABORTED';
+                    error('Aborting the Build');
                 }
             }
         }
