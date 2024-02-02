@@ -19,7 +19,9 @@ properties([
                     classpath: [], 
                     sandbox: false, 
                     script: 
-                        'return[\'Dev\',"\'QA"\']'
+                        '''
+                        |return['Dev','QA']
+                        |'''.stripMargin()
                 ]
             ]
         ]
