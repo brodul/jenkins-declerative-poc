@@ -11,6 +11,7 @@ node{
 }
 
 
+// https://stackoverflow.com/questions/51637782/how-to-exit-from-the-jenkins-pipeline-if-a-stage-sets-build-fail-unstable-status
 
 pipeline {
     agent any
