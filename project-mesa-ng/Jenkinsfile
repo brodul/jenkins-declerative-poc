@@ -6,7 +6,7 @@ node{
 //              usernameVariable: 'GIT_USERNAME',
 //              passwordVariable: 'GITLAB_ACCESS_TOKEN']]) {
     // BRANCH_NAMES = sh (script: 'git ls-remote -h https://${GIT_USERNAME}:${GITLAB_ACCESS_TOKEN}@dns.name/gitlab/PROJS/PROJ.git | sed \'s/\\(.*\\)\\/\\(.*\\)/\\2/\' ', returnStdout:true).trim()
-    ENVS = sh (script: 'echo "[\'banana\',\'pineapple\']"', returnStdout:true).trim()
+    ENVS = sh (script: 'echo "banana"; echo "pineapple"', returnStdout:true).trim()
 
 //}
 }
