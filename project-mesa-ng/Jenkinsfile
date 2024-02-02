@@ -1,0 +1,44 @@
+// https://stackoverflow.com/a/67775090
+
+node{
+// withCredentials([[$class: 'UsernamePasswordMultiBinding',
+//               credentialsId: 'user-credential-in-gitlab',
+//              usernameVariable: 'GIT_USERNAME',
+//              passwordVariable: 'GITLAB_ACCESS_TOKEN']]) {
+    // BRANCH_NAMES = sh (script: 'git ls-remote -h https://${GIT_USERNAME}:${GITLAB_ACCESS_TOKEN}@dns.name/gitlab/PROJS/PROJ.git | sed \'s/\\(.*\\)\\/\\(.*\\)/\\2/\' ', returnStdout:true).trim()
+    ENVS = sh (script: 'echo: "[\'banana\',\'pineapple\']"', returnStdout:true).trim()
+
+//}
+}
+
+
+
+pipeline {
+    agent any
+
+parameters {
+    choice(
+        name: 'Envs',
+        choices: "${ENVS}",
+        description: 'to refresh the list, go to configure, disable "this build has parameters", launch build (without parameters)to reload the list and stop it, then launch it again (with parameters)'
+    )
+}
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
