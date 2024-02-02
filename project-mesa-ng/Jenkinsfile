@@ -7,6 +7,11 @@ node{
 //              passwordVariable: 'GITLAB_ACCESS_TOKEN']]) {
     // BRANCH_NAMES = sh (script: 'git ls-remote -h https://${GIT_USERNAME}:${GITLAB_ACCESS_TOKEN}@dns.name/gitlab/PROJS/PROJ.git | sed \'s/\\(.*\\)\\/\\(.*\\)/\\2/\' ', returnStdout:true).trim()
     ENVS = sh (script: 'echo "banana"; echo "pineapple"', returnStdout:true).trim()
+        // Dont trigger the rest of the script if pulled from Github
+        if( !currentBuild.getBuildCauses('jenkins.branch.BranchEventCause').isEmpty() ) {
+            currentBuild.result = 'SUCCESS'
+            return
+        }
 
 //}
 }
