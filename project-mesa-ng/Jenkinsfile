@@ -33,8 +33,6 @@ parameters {
                         return;
                     }
                 }
-            }
-            steps {
                 echo 'Building..'
             }
         }
